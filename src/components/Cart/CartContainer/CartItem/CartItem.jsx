@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useDispatch } from 'react-redux';
 import HouseInfoIcon from './HouseInfoIcon/HouseInfoIcon';
-import { remove } from '../../../redux/feature/cartSlice';
+import { remove } from '../../../../redux/feature/cartSlice';
 
 const CartItem = ({ item }) => {
   const { name, asking_price, address, house_info, image } = item;

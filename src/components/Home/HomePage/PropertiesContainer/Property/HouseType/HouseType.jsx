@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import badge from '../../../../../images/badge.png';
+import badge from '../../../../../../images/badge.png';
 
 const HouseType = ({ house_type }) => {
   console.log(house_type);

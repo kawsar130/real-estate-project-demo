@@ -1,11 +1,10 @@
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
-import LoadingSpinner from '../miscellaneous/LoadingSpinner';
-
+import LoadingSpinner from '../../miscellaneous/LoadingSpinner';
 import Map from './Map/Map';
 import PropertiesContainer from './PropertiesContainer/PropertiesContainer';
 
-const Shop = () => {
+const HomePage = () => {
   const [properties, setProperties] = useState([]);
   const [errorText, setErrorText] = useState('');
 
@@ -49,4 +48,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default HomePage;

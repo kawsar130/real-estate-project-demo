@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../../../../redux/feature/cartSlice';
+import { addToCart } from '../../../../../redux/feature/cartSlice';
 import HouseInfo from './HouseInfo/HouseInfo';
 import HouseType from './HouseType/HouseType';
 
