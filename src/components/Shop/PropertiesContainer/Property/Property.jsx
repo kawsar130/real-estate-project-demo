@@ -61,7 +61,7 @@ const Property = ({ property }) => {
                 gutterBottom
                 variant="h6"
                 component="div"
-                sx={{ mt: -1, py: 0 }}
+                sx={{ mt: -0.7, py: 0, fontSize: { xs: '1em', xl: '1.2em' } }}
               >
                 ${asking_price}
               </Typography>
@@ -76,6 +76,9 @@ const Property = ({ property }) => {
                   backgroundColor: '#660033',
                   textTransform: 'capitalize',
                   mt: 0.7,
+                  '&:hover': {
+                    backgroundColor: 'black',
+                  },
                 }}
               >
                 Buy

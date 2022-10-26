@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import LoadingSpinner from '../miscellaneous/LoadingSpinner';
 
@@ -18,6 +18,7 @@ const Shop = () => {
     }
   };
 
+  // Loading data from the API
   useEffect(() => {
     fetchProperties()
       .then((res) => {
@@ -34,10 +35,7 @@ const Shop = () => {
   }
 
   return (
-    <Box sx={{ px: 3, mt: 4 }}>
-      <Typography variant="h5" sx={{ fontSize: '1.2em', mb: 2 }}>
-        Properties
-      </Typography>
+    <Box sx={{ px: 3 }}>
       <Box
         sx={{
           display: 'flex',

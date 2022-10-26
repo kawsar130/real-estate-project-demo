@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import Property from './Property/Property';
 
 const drawerWidth = '60vw';
@@ -12,10 +12,13 @@ const PropertiesContainer = ({ properties }) => {
         width: drawerWidth,
         flexShrink: 0,
         '& .MuiDrawer-paper': { width: drawerWidth, boxSizing: 'border-box' },
-        height: '90vh',
-        overflow: 'scroll',
+        height: { xs: '89vh', xl: '92vh' },
+        overflowY: 'scroll',
       }}
     >
+      <Typography variant="h5" sx={{ fontSize: '1.2em', mb: 2 }}>
+        Properties
+      </Typography>
       <Box sx={{ overflow: 'auto' }}>
         <Grid container spacing={2}>
           {properties.map((property, index) => (

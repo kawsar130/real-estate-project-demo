@@ -3,10 +3,7 @@ import { Box } from '@mui/material';
 const Map = () => {
   console.log('Map');
   return (
-    <Box
-      component="main"
-      sx={{ flexGrow: 1, p: 3, width: '40vw', height: '90vh' }}
-    >
+    <Box component="main" sx={{ flexGrow: 1, px: 3, width: '40vw' }}>
       <Box>
         <img
           width="100%"

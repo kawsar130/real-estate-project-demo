@@ -1,4 +1,4 @@
-import { AppBar, Box, Toolbar, Typography } from '@mui/material';
+import { AppBar, Badge, Box, Toolbar, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
@@ -7,8 +7,11 @@ const NavBar = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
         elevation={0}
-        style={{ position: 'sticky', top: 0 }}
-        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+          position: 'sticky',
+          top: 0,
+        }}
       >
         <Toolbar
           sx={{
@@ -28,13 +31,15 @@ const NavBar = () => {
             </Typography>
           </Link>
           <Link to="/cart" style={{ textDecoration: 'none', color: 'black' }}>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ fontWeight: 'bold' }}
-            >
-              Cart
-            </Typography>
+            <Badge badgeContent={2} color="success">
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ fontWeight: 'bold', mr: 0.4 }}
+              >
+                Cart
+              </Typography>
+            </Badge>
           </Link>
         </Toolbar>
       </AppBar>

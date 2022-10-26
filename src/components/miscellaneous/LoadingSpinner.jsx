@@ -3,7 +3,7 @@ import { Box, CircularProgress, Alert } from '@mui/material';
 const LoadingSpinner = ({ error }) => (
   <Box
     sx={{
-      height: '100vh',
+      height: '90vh',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
