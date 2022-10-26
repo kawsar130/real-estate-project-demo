@@ -7,20 +7,16 @@ import {
   Grid,
   Typography,
 } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../../redux/feature/cartSlice';
 import HouseInfo from './HouseInfo/HouseInfo';
 import HouseType from './HouseType/HouseType';
 
 const Property = ({ property }) => {
-  const {
-    name,
-    asking_price,
-    address,
-    house_info,
-    house_type,
-    image,
-    coordinates,
-  } = property;
-  console.log(coordinates);
+  const { name, asking_price, address, house_info, house_type, image } =
+    property;
+  const dispatch = useDispatch();
+
   return (
     <Grid item xs={12} md={6} lg={4}>
       <Card elevation={0} sx={{ maxWidth: 345 }}>
@@ -68,6 +64,7 @@ const Property = ({ property }) => {
             </Box>
             <Box>
               <Button
+                onClick={() => dispatch(addToCart(property))}
                 size="small"
                 variant="contained"
                 sx={{

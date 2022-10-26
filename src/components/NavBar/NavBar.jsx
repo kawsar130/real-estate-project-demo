@@ -1,8 +1,17 @@
 import { AppBar, Badge, Box, Toolbar, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getCartTotal } from '../../redux/feature/cartSlice';
 
 const NavBar = () => {
-  console.log('NavBar');
+  const { totalCount, items } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCartTotal());
+  }, [items]);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -31,7 +40,7 @@ const NavBar = () => {
             </Typography>
           </Link>
           <Link to="/cart" style={{ textDecoration: 'none', color: 'black' }}>
-            <Badge badgeContent={2} color="success">
+            <Badge badgeContent={totalCount} color="success">
               <Typography
                 variant="h6"
                 component="div"

@@ -1,9 +1,12 @@
 import { Box, Typography } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { useDispatch } from 'react-redux';
 import HouseInfoIcon from './HouseInfoIcon/HouseInfoIcon';
+import { remove } from '../../../redux/feature/cartSlice';
 
-const CartItem = ({ property }) => {
-  const { name, asking_price, address, house_info, image } = property;
+const CartItem = ({ item }) => {
+  const { name, asking_price, address, house_info, image } = item;
+  const dispatch = useDispatch();
   return (
     <Box
       sx={{
@@ -18,7 +21,14 @@ const CartItem = ({ property }) => {
       }}
     >
       <DeleteForeverIcon
-        sx={{ position: 'absolute', top: 15, right: 15, color: 'red' }}
+        onClick={() => dispatch(remove(name))}
+        sx={{
+          position: 'absolute',
+          top: 15,
+          right: 15,
+          color: 'red',
+          cursor: 'pointer',
+        }}
       />
       <Box
         sx={{

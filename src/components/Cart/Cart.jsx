@@ -1,36 +1,17 @@
 import { Box, Button, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
-import LoadingSpinner from '../miscellaneous/LoadingSpinner';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getCartTotal } from '../../redux/feature/cartSlice';
 import CartItem from './CartItem/CartItem';
 
 const Cart = () => {
-  const [properties, setProperties] = useState([]);
-  const [errorText, setErrorText] = useState('');
+  const { items, totalAmount } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
-  const fetchProperties = async () => {
-    const response = await fetch('https://api.globalomls.com/api/properties');
-    if (!response.ok) {
-      throw new Error('Property data could not be fetched');
-    } else {
-      return response.json();
-    }
-  };
-
-  // Loading data from the API
   useEffect(() => {
-    fetchProperties()
-      .then((res) => {
-        setProperties(res);
-      })
-      .catch((error) => {
-        console.log(error.message);
-        setErrorText(error.message);
-      });
-  }, []);
+    dispatch(getCartTotal());
+  }, [items]);
 
-  if (!properties.length) {
-    return <LoadingSpinner error={errorText} />;
-  }
   return (
     <Box sx={{ height: '89vh', overflowY: 'scroll' }}>
       <Box
@@ -42,16 +23,24 @@ const Cart = () => {
           alignItems: 'center',
         }}
       >
-        {properties.map((property, index) => (
-          <CartItem key={index} property={property} />
+        {items.map((item, index) => (
+          <CartItem key={index} item={item} />
         ))}
+        {items.length === 0 && (
+          <Box sx={{ height: '70vh', display: 'flex', alignItems: 'center' }}>
+            <Typography variant="h4">Your Cart is Empty!</Typography>
+          </Box>
+        )}
       </Box>
       <Box
         sx={{
-          mx: 3,
           borderTop: 2,
-          position: 'sticky',
+          position: 'fixed',
           bottom: '0',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '96%',
+          height: '60px',
           backgroundColor: 'white',
         }}
       >
@@ -59,18 +48,30 @@ const Cart = () => {
           sx={{
             display: 'flex',
             justifyContent: 'space-between',
-            mt: 1,
+            alignItems: 'center',
           }}
         >
-          <Typography variant="h6">Total $600,000</Typography>
-          <Button variant="text">
-            <Typography
-              variant="h6"
-              sx={{ backgroundColor: 'black', color: 'white', px: 2 }}
-            >
-              Checkout
-            </Typography>
-          </Button>
+          <Typography
+            variant="h6"
+            sx={{ fontSize: '1.2em', fontWeight: 'bold' }}
+          >
+            Total ${totalAmount}
+          </Typography>
+          {items.length !== 0 && (
+            <Button variant="text">
+              <Typography
+                variant="h6"
+                sx={{
+                  backgroundColor: 'black',
+                  color: 'white',
+                  px: 2,
+                  fontSize: '1.2em',
+                }}
+              >
+                Checkout
+              </Typography>
+            </Button>
+          )}
         </Box>
       </Box>
     </Box>
