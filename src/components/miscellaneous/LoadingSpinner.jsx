@@ -14,7 +14,7 @@ const LoadingSpinner = ({ error }) => (
         {error.message}! Please Check Your Network and Reload Again!
       </Alert>
     ) : (
-      <CircularProgress />
+      <CircularProgress color="inherit" />
     )}
   </Box>
 );

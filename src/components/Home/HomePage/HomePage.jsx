@@ -1,7 +1,8 @@
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import LoadingSpinner from '../../miscellaneous/LoadingSpinner';
-import Map from './Map/Map';
+import MapHome from './MapHome/MapHome';
+
 import PropertiesContainer from './PropertiesContainer/PropertiesContainer';
 
 const HomePage = () => {
@@ -10,7 +11,7 @@ const HomePage = () => {
 
   // function declaration for fetching data
   const fetchProperties = async () => {
-    const response = await fetch('https://api.globalomls.com/api/properties');
+    const response = await fetch(process.env.REACT_APP_PROPERTIES_API);
     if (!response.ok) {
       throw new Error('Property data could not be fetched');
     } else {
@@ -44,7 +45,7 @@ const HomePage = () => {
         }}
       >
         <PropertiesContainer properties={properties} />
-        <Map properties={properties} />
+        <MapHome properties={properties} />
       </Box>
     </Box>
   );
