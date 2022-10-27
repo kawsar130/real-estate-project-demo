@@ -1,5 +1,7 @@
 import { Box, CircularProgress, Alert } from '@mui/material';
 
+// Spinner during data loading.
+
 const LoadingSpinner = ({ error }) => (
   <Box
     sx={{

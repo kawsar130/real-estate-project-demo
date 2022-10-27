@@ -46,6 +46,13 @@ const addressTextStyle = {
   height: '32px',
 };
 
+const locateButtonStyle = {
+  backgroundColor: 'darkSalmon',
+  '&:hover': {
+    backgroundColor: 'darkKhaki',
+  },
+};
+
 export {
   imgContainerStyle,
   cardContentContainer,
@@ -53,4 +60,5 @@ export {
   buttonStyle,
   nameTextStyle,
   addressTextStyle,
+  locateButtonStyle,
 };

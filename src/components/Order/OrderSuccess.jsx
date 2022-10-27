@@ -7,6 +7,7 @@ import { successContainerStyle, buttonTextStyle } from './style';
 const OrderSuccess = () => {
   const { totalCount, totalAmount } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
   return totalCount !== 0 ? (
     <Box sx={successContainerStyle}>
       <Typography variant="h4" sx={{ fontWeight: 'bold' }}>

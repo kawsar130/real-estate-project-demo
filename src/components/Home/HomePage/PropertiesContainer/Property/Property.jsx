@@ -18,9 +18,11 @@ import {
   buttonStyle,
   nameTextStyle,
   addressTextStyle,
+  locateButtonStyle,
 } from './style';
+import './Property.css';
 
-const Property = ({ property }) => {
+const Property = ({ property, handleClick }) => {
   const { name, asking_price, address, house_info, house_type, image } =
     property;
   const dispatch = useDispatch();
@@ -28,7 +30,17 @@ const Property = ({ property }) => {
   return (
     <Grid item xs={12} md={6} lg={4}>
       <Card elevation={0} sx={{ maxWidth: 345 }}>
-        <Box sx={{ position: 'relative', mx: 1 }}>
+        <Box sx={{ position: 'relative', mx: 1 }} className="img-container">
+          <Box className="hover-shadow-container">
+            <Button
+              onClick={() => handleClick(property)}
+              variant="contained"
+              size="small"
+              sx={locateButtonStyle}
+            >
+              Locate on Map
+            </Button>
+          </Box>
           <HouseType house_type={house_type} />
           <Box sx={imgContainerStyle} />
           <CardMedia

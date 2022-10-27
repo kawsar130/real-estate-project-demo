@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
+
 import LoadingSpinner from '../../miscellaneous/LoadingSpinner';
 import MapHome from './MapHome/MapHome';
 
@@ -7,6 +8,7 @@ import PropertiesContainer from './PropertiesContainer/PropertiesContainer';
 
 const HomePage = () => {
   const [properties, setProperties] = useState([]);
+  const [propertyClicked, setPropertyClicked] = useState({});
   const [errorText, setErrorText] = useState('');
 
   // function declaration for fetching data
@@ -36,6 +38,10 @@ const HomePage = () => {
     return <LoadingSpinner error={errorText} />;
   }
 
+  const handleClick = (item) => {
+    setPropertyClicked(item);
+  };
+
   return (
     <Box sx={{ px: 3 }}>
       <Box
@@ -44,8 +50,11 @@ const HomePage = () => {
           justifyContent: 'center',
         }}
       >
-        <PropertiesContainer properties={properties} />
-        <MapHome properties={properties} />
+        <PropertiesContainer
+          properties={properties}
+          handleClick={handleClick}
+        />
+        <MapHome properties={properties} propertyClicked={propertyClicked} />
       </Box>
     </Box>
   );

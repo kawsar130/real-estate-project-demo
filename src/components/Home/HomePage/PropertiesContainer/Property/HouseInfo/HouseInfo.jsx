@@ -12,7 +12,7 @@ import {
 
 const HouseInfo = ({ house_info }) => {
   const { bed, bath, garage, sqft } = house_info;
-  console.log(house_info);
+
   return (
     <Box sx={houseInfoContainerStyle}>
       <Box sx={{ display: 'flex' }}>
