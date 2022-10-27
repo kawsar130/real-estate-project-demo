@@ -22,7 +22,7 @@ const askingPriceStyle = {
 const buttonStyle = {
   height: '25px',
   width: '80px',
-  backgroundColor: '#660033',
+  backgroundColor: '#444444',
   textTransform: 'capitalize',
   mt: 0.7,
   '&:hover': {
