@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getCartTotal } from '../../redux/feature/cartSlice';
+import { appBarStyle, toolbarStyle, linkStyle, cartTextStyle } from './style';
 
 const NavBar = () => {
   const { totalCount, items } = useSelector((state) => state.cart);
@@ -14,23 +15,9 @@ const NavBar = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        elevation={0}
-        sx={{
-          zIndex: (theme) => theme.zIndex.drawer + 1,
-          position: 'sticky',
-          top: 0,
-        }}
-      >
-        <Toolbar
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            backgroundColor: 'white',
-            color: 'black',
-          }}
-        >
-          <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+      <AppBar elevation={0} sx={appBarStyle}>
+        <Toolbar sx={toolbarStyle}>
+          <Link to="/" style={linkStyle}>
             <Typography
               variant="h6"
               component="div"
@@ -39,13 +26,9 @@ const NavBar = () => {
               SHOP
             </Typography>
           </Link>
-          <Link to="/cart" style={{ textDecoration: 'none', color: 'black' }}>
+          <Link to="/cart" style={linkStyle}>
             <Badge badgeContent={totalCount} color="success">
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ fontWeight: 'bold', mr: 0.4 }}
-              >
+              <Typography variant="h6" component="div" sx={cartTextStyle}>
                 Cart
               </Typography>
             </Badge>

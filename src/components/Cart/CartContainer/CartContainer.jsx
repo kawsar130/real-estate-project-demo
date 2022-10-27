@@ -14,6 +14,7 @@ import {
 
 const CartContainer = () => {
   const { items, totalAmount } = useSelector((state) => state.cart);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,13 +42,13 @@ const CartContainer = () => {
             Total ${totalAmount}
           </Typography>
           {items.length !== 0 && (
-            <Link to="/order" style={{ textDecoration: 'none' }}>
-              <Button variant="text">
+            <Button variant="text">
+              <Link to="/order" style={{ textDecoration: 'none' }}>
                 <Typography variant="h6" sx={checkoutButtonStyle}>
                   Checkout
                 </Typography>
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           )}
         </Box>
       </Box>

@@ -2,20 +2,13 @@ import { Box, Button, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { clearCart } from '../../redux/feature/cartSlice';
+import { successContainerStyle, buttonTextStyle } from './style';
 
 const OrderSuccess = () => {
   const { totalCount, totalAmount } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   return totalCount !== 0 ? (
-    <Box
-      sx={{
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
+    <Box sx={successContainerStyle}>
       <Typography variant="h4" sx={{ fontWeight: 'bold' }}>
         Thank you for your purchase.
       </Typography>
@@ -23,52 +16,24 @@ const OrderSuccess = () => {
         You have purchased {totalCount}{' '}
         {totalCount < 2 ? 'property' : 'properties'} for ${totalAmount}
       </Typography>
-      <Link to="/" style={{ textDecoration: 'none' }}>
-        <Button variant="text" onClick={dispatch(clearCart)}>
-          <Typography
-            variant="h6"
-            sx={{
-              backgroundColor: 'black',
-              color: 'white',
-              py: 0.5,
-              px: 2,
-              fontSize: '1.1em',
-              mt: 5,
-            }}
-          >
+      <Button variant="text" onClick={dispatch(clearCart)}>
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <Typography variant="h6" sx={buttonTextStyle}>
             Go back to Store
           </Typography>
-        </Button>
-      </Link>
+        </Link>
+      </Button>
     </Box>
   ) : (
-    <Box
-      sx={{
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
+    <Box sx={successContainerStyle}>
       <Typography variant="h4">You did not order anything yet!</Typography>
-      <Link to="/" style={{ textDecoration: 'none' }}>
-        <Button variant="text" onClick={dispatch(clearCart)}>
-          <Typography
-            variant="h6"
-            sx={{
-              backgroundColor: 'black',
-              color: 'white',
-              py: 0.5,
-              px: 2,
-              fontSize: '1.1em',
-              mt: 5,
-            }}
-          >
+      <Button variant="text" onClick={dispatch(clearCart)}>
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <Typography variant="h6" sx={buttonTextStyle}>
             Go to Store
           </Typography>
-        </Button>
-      </Link>
+        </Link>
+      </Button>
     </Box>
   );
 };

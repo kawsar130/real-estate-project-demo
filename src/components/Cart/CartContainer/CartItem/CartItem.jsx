@@ -3,45 +3,28 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useDispatch } from 'react-redux';
 import HouseInfoIcon from './HouseInfoIcon/HouseInfoIcon';
 import { remove } from '../../../../redux/feature/cartSlice';
+import {
+  itemContainerStyle,
+  deleteButtonStyle,
+  imgContainerStyle,
+  imgStyle,
+  itemNameStyle,
+  addressStyle,
+} from './style';
 
 const CartItem = ({ item }) => {
   const { name, asking_price, address, house_info, image } = item;
+
   const dispatch = useDispatch();
+
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        width: '100%',
-        maxWidth: '500px',
-        mb: 2,
-        borderRadius: 3,
-        border: 1.5,
-        position: 'relative',
-      }}
-    >
+    <Box sx={itemContainerStyle}>
       <DeleteForeverIcon
         onClick={() => dispatch(remove(name))}
-        sx={{
-          position: 'absolute',
-          top: 15,
-          right: 15,
-          color: 'red',
-          cursor: 'pointer',
-        }}
+        sx={deleteButtonStyle}
       />
-      <Box
-        sx={{
-          maxWidth: '35%',
-          display: 'flex',
-          borderRadius: '10px',
-        }}
-      >
-        <img
-          src={image}
-          alt={house_info}
-          style={{ borderRadius: '10px', width: '100%', objectFit: 'cover' }}
-        />
+      <Box sx={imgContainerStyle}>
+        <img src={image} alt={house_info} style={imgStyle} />
       </Box>
       <Box sx={{ width: '65%', px: 3 }}>
         <Box>
@@ -56,29 +39,14 @@ const CartItem = ({ item }) => {
           <Typography
             variant="subtitle2"
             color="text.primary"
-            sx={{
-              lineHeight: '1.2',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              height: '32px',
-            }}
+            sx={itemNameStyle}
           >
             {name}
           </Typography>
           <Typography
             variant="subtitle2"
             color="text.secondary"
-            sx={{
-              fontWeight: 'bold',
-              mt: 1,
-              mb: 2,
-              whiteSpace: 'nowrap',
-              width: '100%',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              lineHeight: '1.2',
-              height: '16px',
-            }}
+            sx={addressStyle}
           >
             {address}
           </Typography>

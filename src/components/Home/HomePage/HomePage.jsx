@@ -8,6 +8,7 @@ const HomePage = () => {
   const [properties, setProperties] = useState([]);
   const [errorText, setErrorText] = useState('');
 
+  // function declaration for fetching data
   const fetchProperties = async () => {
     const response = await fetch('https://api.globalomls.com/api/properties');
     if (!response.ok) {
@@ -29,6 +30,7 @@ const HomePage = () => {
       });
   }, []);
 
+  // spinner for loading time and shows error when failed to load
   if (!properties.length) {
     return <LoadingSpinner error={errorText} />;
   }

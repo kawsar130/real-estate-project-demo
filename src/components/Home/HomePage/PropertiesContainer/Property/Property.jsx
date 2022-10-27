@@ -11,6 +11,14 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../../../redux/feature/cartSlice';
 import HouseInfo from './HouseInfo/HouseInfo';
 import HouseType from './HouseType/HouseType';
+import {
+  imgContainerStyle,
+  cardContentContainer,
+  askingPriceStyle,
+  buttonStyle,
+  nameTextStyle,
+  addressTextStyle,
+} from './style';
 
 const Property = ({ property }) => {
   const { name, asking_price, address, house_info, house_type, image } =
@@ -22,16 +30,7 @@ const Property = ({ property }) => {
       <Card elevation={0} sx={{ maxWidth: 345 }}>
         <Box sx={{ position: 'relative', mx: 1 }}>
           <HouseType house_type={house_type} />
-          <Box
-            sx={{
-              height: '100%',
-              width: '100%',
-              position: 'absolute',
-              background: 'transparent',
-              boxShadow: 'inset 0px -100px 40px -70px black',
-              borderRadius: 3,
-            }}
-          />
+          <Box sx={imgContainerStyle} />
           <CardMedia
             component="img"
             alt="green iguana"
@@ -42,13 +41,7 @@ const Property = ({ property }) => {
           <HouseInfo house_info={house_info} />
         </Box>
         <CardContent>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'start',
-            }}
-          >
+          <Box sx={cardContentContainer}>
             <Box>
               <Typography variant="caption" sx={{ fontWeight: '500' }}>
                 Asking Price
@@ -57,7 +50,7 @@ const Property = ({ property }) => {
                 gutterBottom
                 variant="h6"
                 component="div"
-                sx={{ mt: -0.7, py: 0, fontSize: { xs: '1em', xl: '1.2em' } }}
+                sx={askingPriceStyle}
               >
                 ${asking_price}
               </Typography>
@@ -67,16 +60,7 @@ const Property = ({ property }) => {
                 onClick={() => dispatch(addToCart(property))}
                 size="small"
                 variant="contained"
-                sx={{
-                  height: '25px',
-                  width: '80px',
-                  backgroundColor: '#660033',
-                  textTransform: 'capitalize',
-                  mt: 0.7,
-                  '&:hover': {
-                    backgroundColor: 'black',
-                  },
-                }}
+                sx={buttonStyle}
               >
                 Buy
               </Button>
@@ -85,26 +69,14 @@ const Property = ({ property }) => {
           <Typography
             variant="subtitle2"
             color="text.primary"
-            sx={{
-              lineHeight: '1.2',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              height: '32px',
-            }}
+            sx={nameTextStyle}
           >
             {name}
           </Typography>
           <Typography
             variant="subtitle2"
             color="text.secondary"
-            sx={{
-              fontWeight: 'bold',
-              mt: 1,
-              lineHeight: '1.2',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              height: '32px',
-            }}
+            sx={addressTextStyle}
           >
             {address}
           </Typography>
