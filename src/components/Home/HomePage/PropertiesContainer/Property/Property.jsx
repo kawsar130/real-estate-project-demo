@@ -12,6 +12,7 @@ import { addToCart } from '../../../../../redux/feature/cartSlice';
 import HouseInfo from './HouseInfo/HouseInfo';
 import HouseType from './HouseType/HouseType';
 import {
+  propertyContainer,
   imgContainerStyle,
   cardContentContainer,
   askingPriceStyle,
@@ -23,15 +24,14 @@ import {
 import './Property.css';
 
 const Property = ({ property, handleClick }) => {
-  const { name, asking_price, address, house_info, house_type, image } =
-    property;
+  const { name, asking_price, address, house_info, house_type, image } = property;
   const dispatch = useDispatch();
 
   return (
-    <Grid item xs={12} md={6} lg={4}>
+    <Grid item xs={12} md={6} lg={4} sx={propertyContainer}>
       <Card elevation={0} sx={{ maxWidth: 345 }}>
         <Box sx={{ position: 'relative', mx: 1 }} className="img-container">
-          <Box className="hover-shadow-container">
+          <Box className="hover-shadow-container" sx={{ display: { xs: 'none', md: 'flex' } }}>
             <Button
               onClick={() => handleClick(property)}
               variant="contained"

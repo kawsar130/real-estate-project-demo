@@ -14,7 +14,7 @@ const NavBar = () => {
   }, [items]);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ width: '100%' }}>
       <AppBar elevation={0} sx={appBarStyle}>
         <Toolbar sx={toolbarStyle}>
           <Link to="/" style={linkStyle}>

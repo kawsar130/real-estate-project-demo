@@ -47,7 +47,6 @@ const HomePage = () => {
       <Box
         sx={{
           display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' },
           justifyContent: 'center',
         }}
       >

@@ -1,3 +1,5 @@
+const propertyContainer = { display: 'flex', justifyContent: 'center' };
+
 const imgContainerStyle = {
   height: '100%',
   width: '100%',
@@ -54,6 +56,7 @@ const locateButtonStyle = {
 };
 
 export {
+  propertyContainer,
   imgContainerStyle,
   cardContentContainer,
   askingPriceStyle,
