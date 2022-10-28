@@ -10,7 +10,7 @@ const OrderSuccess = () => {
 
   return totalCount !== 0 ? (
     <Box sx={successContainerStyle}>
-      <Typography variant="h4" sx={{ fontWeight: 'bold' }}>
+      <Typography variant="h4" sx={{ fontWeight: 'bold', textAlign: 'center' }}>
         Thank you for your purchase.
       </Typography>
       <Typography variant="subtitle2" sx={{ mt: 1 }}>
