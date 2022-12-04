@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import api_data from '../../../api_data';
 
 import LoadingSpinner from '../../miscellaneous/LoadingSpinner';
 import MapHome from './MapHome/MapHome';
@@ -7,31 +8,31 @@ import MapHome from './MapHome/MapHome';
 import PropertiesContainer from './PropertiesContainer/PropertiesContainer';
 
 const HomePage = () => {
-  const [properties, setProperties] = useState([]);
+  const [properties] = useState(api_data);
   const [propertyClicked, setPropertyClicked] = useState({});
-  const [errorText, setErrorText] = useState('');
+  const [errorText] = useState('');
 
-  // function declaration for fetching data
-  const fetchProperties = async () => {
-    const response = await fetch(process.env.REACT_APP_PROPERTIES_API);
-    if (!response.ok) {
-      throw new Error('Property data could not be fetched');
-    } else {
-      return response.json();
-    }
-  };
+  // // function declaration for fetching data
+  // const fetchProperties = async () => {
+  //   const response = await fetch(process.env.REACT_APP_PROPERTIES_API);
+  //   if (!response.ok) {
+  //     throw new Error('Property data could not be fetched');
+  //   } else {
+  //     return response.json();
+  //   }
+  // };
 
-  // Loading data from the API
-  useEffect(() => {
-    fetchProperties()
-      .then((res) => {
-        setProperties(res);
-      })
-      .catch((error) => {
-        console.log(error.message);
-        setErrorText(error.message);
-      });
-  }, []);
+  // // Loading data from the API
+  // useEffect(() => {
+  //   fetchProperties()
+  //     .then((res) => {
+  //       setProperties(res);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //       setErrorText(error.message);
+  //     });
+  // }, []);
 
   // spinner for loading time and shows error when failed to load
   if (!properties.length) {
